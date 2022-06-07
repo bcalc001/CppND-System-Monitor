@@ -166,31 +166,6 @@ vector<string> LinuxParser::CpuUtilization(int pid)
 
 
 // TODO: Read and return CPU utilization
-vector<string> LinuxParser::CpuUtilization(int pid)
-{
-    string line;
-    vector<string> token;
-    string delim = " ";
-    std::ifstream procfile;
-
-    //open the processor status file
-    procfile.open("/proc/"+to_string(pid)+"/stat");
-    getline(procfile, line);	//capture first line only
-    int pos = 0;
-
-    while ((pos = line.find(delim)) != string::npos) 
-    {
-      token.push_back(line.substr(0, pos));    
-      line.erase(0, pos + delim.length());    
-    }
-
-    token.erase(token.begin(),token.begin()+13);
-    token.erase(token.end()-29,token.end());
-    return token; //test
-  }
-
-
-// TODO: Read and return CPU utilization
 vector<string> LinuxParser::Utilization() 
 {
   string line;
