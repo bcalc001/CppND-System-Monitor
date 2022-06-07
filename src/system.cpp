@@ -30,9 +30,7 @@ vector<Process>& System::Processes()
   vector<int> pids;  
   pids = LinuxParser::Pids();
   
-  for (int proc : pids) {processes_.push_back(Process(proc));}
-  //for (int i = 0; i < pids.size(); i++){std::cout<<processes_[i].Pid()<<"\n";}
-  //std::cout<<std::to_string(processes_[3].Pid());                      
+  for (int proc : pids) {processes_.push_back(Process(proc));}         
   return processes_; 
 }
 
