@@ -1,7 +1,8 @@
 #include <string>
 #include <math.h>
 #include "format.h"
-
+#include <sstream>
+#include <iomanip>
 using std::string;
 
 
@@ -15,8 +16,12 @@ string Format::ElapsedTime(long seconds)
   mm = floor(remainder/60);
   remainder -= mm*60;
   ss = remainder;
- 
-  time = std::to_string(hh) + ":" + std::to_string(mm) + ":" + std::to_string(ss);
+std::ostringstream elapsed_time;
+  elapsed_time << std::setw(2) << std::setfill('0') << std::to_string(hh) << ":" 
+     << std::setw(2) << std::setfill('0') << std::to_string(mm) << ":"
+     << std::setw(2) << std::setfill('0') << std::to_string(ss);
+  return elapsed_time.str();  //time = std::setw(2)std::to_string(hh) + ":" + std::to_string(mm) + ":" + std::to_string(ss);
   
  
-  return time; }
+//  return time; 
+}
